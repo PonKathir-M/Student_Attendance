@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Attendance Sheet</h1>
+
+  <form id="attendanceForm">
+    <table>
+      <thead>
+        <tr>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Present</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td><input type="checkbox" name="attendance1"></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Smith</td>
+          <td><input type="checkbox" name="attendance2"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Raj Kumar</td>
+          <td><input type="checkbox" name="attendance3"></td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <button type="submit">Submit Attendance</button>
+  </form>
+
+  <script>
+    document.getElementById("attendanceForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const rows = document.querySelectorAll("tbody tr");
+      let report = "";
+      rows.forEach((row, index) => {
+        const name = row.cells[1].textContent;
+        const checked = row.querySelector("input").checked;
+        report += `${name} is ${checked ? "Present" : "Absent"}\n`;
+      });
+      alert(report); // Replace with backend submission if needed
+    });
+  </script>
+
+</body>
+</html>
